@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function Login() {
+  const API = import.meta.env.VITE_API_BASE_URL;
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
   const navigate = useNavigate();
@@ -19,12 +20,9 @@ function Login() {
     setError("");
 
     try {
-      const res = await axios.post(
-        "http://localhost:5000/api/auth/login",
-        formData,
-      );
+      const res = await axios.post(`${API}/auth/login`, formData);
       localStorage.setItem("token", res.data.token); // Store token
-      navigate("/dashboard");
+      navigate("/");
     } catch (err) {
       setError(err.response?.data?.error || "Login failed");
     }
