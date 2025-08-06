@@ -24,7 +24,7 @@ function Login() {
         formData,
       );
       localStorage.setItem("token", res.data.token); // Store token
-      navigate("/"); // Go to dashboard/home
+      navigate("/dashboard");
     } catch (err) {
       setError(err.response?.data?.error || "Login failed");
     }
