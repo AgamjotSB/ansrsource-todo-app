@@ -4,6 +4,7 @@ const cors = require("cors");
 
 const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/user");
+const todoRoutes = require("./routes/todo");
 
 require("dotenv").config({
   path: [".env.local", ".env"],
@@ -14,6 +15,7 @@ app.use(cors());
 app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
+app.use("/api/todos", todoRoutes);
 
 const PORT = 5000;
 
